@@ -4,13 +4,14 @@ import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
+import com.example.wim.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
+    private lateinit var binding:ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-        val sf = getSharedPreferences("time", 0)
-        val y = sf.getString("yearMonth", "")
-        Toast.makeText(this, y, Toast.LENGTH_SHORT).show()
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+
     }
 }
