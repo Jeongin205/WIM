@@ -1,4 +1,4 @@
-package com.exampletz.wim
+package com.example.wim.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

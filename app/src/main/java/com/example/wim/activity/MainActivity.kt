@@ -1,8 +1,9 @@
-package com.example.wim
+package com.example.wim.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.example.wim.R
 import com.example.wim.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

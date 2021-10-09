@@ -1,10 +1,10 @@
-package com.example.wim
+package com.example.wim.activity
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
+import com.example.wim.R
 import java.text.SimpleDateFormat
 import java.util.*
 

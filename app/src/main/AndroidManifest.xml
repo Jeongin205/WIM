@@ -10,13 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WIM">
         <activity
-            android:name=".SignUpActivity"
+            android:name=".activity.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
-            android:exported="true" />
-        <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,8 +22,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true" />
+        <activity
+            android:name=".activity.SignUpActivity"
+            android:exported="true"/>
     </application>
 
 </manifest>
