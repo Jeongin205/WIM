@@ -19,8 +19,9 @@
         app:layout_constraintRight_toRightOf="parent"/>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:background="@color/white"
+        android:layout_height="match_parent"
+        android:layout_marginTop="216dp"
+        android:background="@drawable/main_box"
         app:layout_constraintBottom_toBottomOf="parent">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
