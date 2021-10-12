@@ -63,8 +63,8 @@ class SignUpActivity : AppCompatActivity() {
                 ) {
                     binding.layoutPassword.isErrorEnabled = false
                     binding.layoutPassword.error = null
-                    if(!p0!!.isBlank()){
-                        binding.passwordCheckEditText.addTextChangedListener(object : TextWatcher{
+                    if (!p0!!.isBlank()) {
+                        binding.passwordCheckEditText.addTextChangedListener(object : TextWatcher {
                             override fun beforeTextChanged(
                                 p0: CharSequence?,
                                 p1: Int,
@@ -79,12 +79,11 @@ class SignUpActivity : AppCompatActivity() {
                                 p2: Int,
                                 p3: Int
                             ) {
-                                if(p0.toString()==binding.passwordEditText.text.toString()||p0!!.isBlank()){
-                                    if(!p0!!.isBlank()) isPassword =true
+                                if (p0.toString() == binding.passwordEditText.text.toString() || p0!!.isBlank()) {
+                                    if (!p0!!.isBlank()) isPassword = true
                                     binding.layoutPasswordCheck.isErrorEnabled = false
-                                    binding.layoutPasswordCheck.error =null
-                                }
-                                else{
+                                    binding.layoutPasswordCheck.error = null
+                                } else {
                                     isPassword = false
                                     binding.layoutPasswordCheck.isErrorEnabled = true
                                     binding.layoutPasswordCheck.error = "비밀번호가 일치하지 않습니다."
@@ -106,25 +105,25 @@ class SignUpActivity : AppCompatActivity() {
 
         })
 
-        binding.signUpButton.setOnClickListener{
-            if(isEmail&&isPassword){
+        binding.signUpButton.setOnClickListener {
+            if (isEmail && isPassword) {
                 val email = binding.emailEditText.text.toString()
                 val password = binding.passwordCheckEditText.text.toString()
-                auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this){task->
-                    if(task.isSuccessful){
-                        Log.d(TAG, "signInWithCustomToken:success")
-
-                        intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            Log.d(TAG, "signInWithCustomToken:success")
+                            intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+                        } else {
+                            Log.w(TAG, "signInWithCustomToken:failure", task.exception)
+                            Toast.makeText(
+                                this, "이미 존재하는 유저이거나\n회원가입 오류입니다.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
                     }
-                    else{
-                        Log.w(TAG, "signInWithCustomToken:failure", task.exception)
-                        Toast.makeText(this, "이미 존재하는 유저이거나\n회원가입 오류입니다.",
-                            Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
-            else{
+            } else {
                 Toast.makeText(this, "입력하신 정보를 확인해주세요", Toast.LENGTH_SHORT).show()
             }
         }

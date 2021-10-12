@@ -9,11 +9,12 @@ import androidx.databinding.DataBindingUtil
 import com.example.wim.R
 import com.example.wim.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var binding:ActivityLoginBinding
+    private lateinit var binding: ActivityLoginBinding
     private lateinit var auth: FirebaseAuth
-    private val TAG : String = "LoginActivity"
+    private val TAG: String = "LoginActivity"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
@@ -42,10 +43,7 @@ class LoginActivity : AppCompatActivity() {
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
                             Log.d(TAG, "signInWithEmail:success")
-                            val user = auth.currentUser
-                            val intent = Intent(this, MainActivity::class.java)
-                            startActivity(intent)
-                            finish()
+                            moveMainPage(auth.currentUser)
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.exception)
                             Toast.makeText(this, "사용자 정보를 확인해 주세요", Toast.LENGTH_SHORT).show()
@@ -54,6 +52,18 @@ class LoginActivity : AppCompatActivity() {
                     }
             }
 
+        }
+    }
+
+    public override fun onStart() {
+        super.onStart()
+        moveMainPage(auth.currentUser)
+    }
+
+    fun moveMainPage(user: FirebaseUser?) {
+        if (user != null) {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 }
