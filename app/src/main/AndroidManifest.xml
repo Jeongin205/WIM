@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WIM">
         <activity
+            android:name=".activity.MainActivity"
+            android:exported="true"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.WIM.NoActionBar" />
+        <activity
             android:name=".activity.LoginActivity"
             android:exported="true" />
         <activity
@@ -22,11 +27,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainActivity"
-            android:exported="true" />
-        <activity
             android:name=".activity.SignUpActivity"
-            android:exported="true"/>
+            android:exported="true" />
     </application>
 
 </manifest>
