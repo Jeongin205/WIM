@@ -17,13 +17,13 @@ class SplashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         val time = System.currentTimeMillis()
-        val yearMonth = SimpleDateFormat("yyMM").format(Date(time))
+        val year = SimpleDateFormat("yy").format(Date(time))
         val month = SimpleDateFormat("MM").format(Date(time))
         val day = SimpleDateFormat("dd").format(Date(time))
 
         val sharedPreference = getSharedPreferences("time", MODE_PRIVATE)
         val editor = sharedPreference.edit()
-        editor.putString("yearMonth", yearMonth)
+        editor.putString("year", year)
         editor.putString("month", month)
         editor.putString("day", day)
         editor.commit()
