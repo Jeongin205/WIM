@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.WIM">
         <activity
+            android:name=".activity.UserSettingActivity"
+            android:exported="true" />
+        <activity
             android:name=".activity.WriteActivity"
             android:exported="true" />
         <activity

@@ -26,6 +26,8 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_up)
         auth = FirebaseAuth.getInstance()
+        val sharedPreference = getSharedPreferences("Login", MODE_PRIVATE)
+        val editor = sharedPreference.edit()
 
         binding.backButton.setOnClickListener {
             intent = Intent(this, LoginActivity::class.java)
@@ -112,6 +114,9 @@ class SignUpActivity : AppCompatActivity() {
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
+                            editor.putString("email", email)
+                            editor.putString("password", password)
+                            editor.commit()
                             Log.d(TAG, "signInWithCustomToken:success")
                             intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)

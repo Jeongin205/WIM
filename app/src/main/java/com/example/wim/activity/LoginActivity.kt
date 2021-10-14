@@ -19,6 +19,8 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         auth = FirebaseAuth.getInstance()
+        val sharedPreference = getSharedPreferences("Login", MODE_PRIVATE)
+        val editor = sharedPreference.edit()
 
         binding.signUpButton.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
@@ -42,12 +44,15 @@ class LoginActivity : AppCompatActivity() {
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this) { task ->
                         if (task.isSuccessful) {
+                            editor.putString("email", email)
+                            editor.putString("password", password)
+                            editor.commit()
                             Log.d(TAG, "signInWithEmail:success")
                             moveMainPage(auth.currentUser)
                         } else {
                             Log.w(TAG, "signInWithEmail:failure", task.exception)
                             Toast.makeText(this, "사용자 정보를 확인해 주세요", Toast.LENGTH_SHORT).show()
-
+                            moveMainPage(null)
                         }
                     }
             }
