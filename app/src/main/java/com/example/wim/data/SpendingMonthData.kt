@@ -1,4 +1,4 @@
-package com.example.wim
+package com.example.wim.data
 
 data class SpendingMonthData(
     val month : String,

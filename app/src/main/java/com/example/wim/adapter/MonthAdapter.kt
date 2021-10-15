@@ -1,8 +1,10 @@
-package com.example.wim
+package com.example.wim.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wim.R
+import com.example.wim.data.SpendingMonthData
 import com.example.wim.databinding.ItemMonthBinding
 
 class MonthAdapter(val data: ArrayList<SpendingMonthData>): RecyclerView.Adapter<MonthAdapter.MonthViewHolder>() {

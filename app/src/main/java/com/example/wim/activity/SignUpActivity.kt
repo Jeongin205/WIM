@@ -58,29 +58,13 @@ class SignUpActivity : AppCompatActivity() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                if (Pattern.matches(
-                        "^(?=.*[a-zA-Z0-9])(?=.*[a-zA-Z!@#$%^&*])(?=.*[0-9!@#$%^&*]).{8,15}$",
-                        p0
-                    ) || p0!!.isBlank()
-                ) {
+                if (Pattern.matches("^(?=.*[a-zA-Z0-9])(?=.*[a-zA-Z!@#$%^&*])(?=.*[0-9!@#$%^&*]).{8,15}$", p0) || p0!!.isBlank()) {
                     binding.layoutPassword.isErrorEnabled = false
                     binding.layoutPassword.error = null
                     if (!p0!!.isBlank()) {
                         binding.passwordCheckEditText.addTextChangedListener(object : TextWatcher {
-                            override fun beforeTextChanged(
-                                p0: CharSequence?,
-                                p1: Int,
-                                p2: Int,
-                                p3: Int
-                            ) {
-                            }
-
-                            override fun onTextChanged(
-                                p0: CharSequence?,
-                                p1: Int,
-                                p2: Int,
-                                p3: Int
-                            ) {
+                            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+                            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                                 if (p0.toString() == binding.passwordEditText.text.toString() || p0!!.isBlank()) {
                                     if (!p0!!.isBlank()) isPassword = true
                                     binding.layoutPasswordCheck.isErrorEnabled = false
@@ -91,7 +75,6 @@ class SignUpActivity : AppCompatActivity() {
                                     binding.layoutPasswordCheck.error = "비밀번호가 일치하지 않습니다."
                                 }
                             }
-
                             override fun afterTextChanged(p0: Editable?) {
                             }
 
