@@ -17,6 +17,7 @@ import com.google.android.material.datepicker.MaterialDatePicker.Builder.datePic
 
 import android.view.ViewGroup
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.GetTokenResult
 
 
@@ -28,8 +29,8 @@ class UserSettingActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_user_setting)
 
         val user = FirebaseAuth.getInstance().currentUser!!
-        val reference = FirebaseDatabase.getInstance().getReference()
         val uid = user.uid
+        val reference = FirebaseDatabase.getInstance().getReference().child(uid)
 
         val builder1 = AlertDialog.Builder(this)
         val builder2 = AlertDialog.Builder(this)
@@ -47,18 +48,15 @@ class UserSettingActivity : AppCompatActivity() {
         }
 
         binding.userDelButton.setOnClickListener {
-            builder1.setTitle("회원탈퇴").setMessage("회원탈퇴를 하시겠습니까?\n유저의 정보가 모두 사라집니다").setPositiveButton("예"){dialog, which->
-                builder2.setTitle("회원탈퇴").setMessage("정말로 탈퇴하시겠습니까?").setPositiveButton("예"){dialog, which->
-                    user.delete().addOnCompleteListener{task->
-                        if(task.isSuccessful){
-                            Firebase.auth.signOut()
-                            reference.setValue(null)
-                            Toast.makeText(this, "이용해주셔서 감사합니다", Toast.LENGTH_SHORT).show()
-                            finishAffinity()
+            builder1.setTitle("회원탈퇴").setMessage("회원탈퇴를 하시겠습니까?\n유저의 정보가 모두 사라집니다").setPositiveButton("예"){dialog1, which1->
+                builder2.setTitle("회원탈퇴").setMessage("정말로 탈퇴하시겠습니까?").setPositiveButton("예"){ dialog2, which2->
+                    user.delete().addOnCompleteListener(this){ task ->
+                            if(task.isSuccessful){
+                                Firebase.auth.signOut()
+                                reference.setValue(null)
+                                finishAffinity()
+                            }
                         }
-                        else
-                            Toast.makeText(this, "불러오기 실패", Toast.LENGTH_SHORT).show()
-                    }
                 }.setNegativeButton("아니오", null).show()
             }.setNegativeButton("아니오", null).show()
         }

@@ -17,38 +17,49 @@
             android:src="@drawable/ic_baseline_arrow_back"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
             android:text="개인 설정"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginTop="64dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
+
         <Button
             android:id="@+id/logout_button"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="로그아웃"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_marginTop="48dp"
+            android:text="로그아웃"
+            app:icon="@drawable/ic_logout_black_24dp"
+            app:layout_constraintBottom_toTopOf="@id/user_del_button"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginHorizontal="72dp"
+            app:layout_constraintTop_toBottomOf="@id/logout_button"
             app:layout_constraintBottom_toTopOf="@id/user_del_button"/>
+
         <Button
             android:id="@+id/user_del_button"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="회원 탈퇴"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_marginBottom="48dp"
+            android:text="회원 탈퇴"
+            app:icon="@drawable/ic_person_remove_black_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/logout_button"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/logout_button" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
