@@ -1,8 +1,10 @@
-package com.example.wim
+package com.example.wim.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.wim.R
+import com.example.wim.data.SpendingData
 import com.example.wim.databinding.ItemMainBinding
 
 class MainAdapter(val data: ArrayList<SpendingData>): RecyclerView.Adapter<MainAdapter.MainViewHolder>() {
